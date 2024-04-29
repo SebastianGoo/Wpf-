@@ -1,0 +1,15 @@
+﻿<Window x:Class="加载页.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:加载页"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="200" Width="400">
+    <Grid>
+        <StackPanel VerticalAlignment="Center">
+            <ProgressBar x:Name="progressBar" Height="20" Margin="10" />
+            <TextBlock x:Name="statusText" TextAlignment="Center" Margin="10"/>
+        </StackPanel>
+    </Grid>
+</Window>

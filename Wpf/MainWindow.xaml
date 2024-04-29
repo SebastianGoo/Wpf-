@@ -1,0 +1,25 @@
+﻿<Window x:Class="Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:Wpf.ViewModels"
+     xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+        <WrapPanel>
+        <Viewbox Stretch="Uniform">
+            <StackPanel>
+                <Button Content="Button 1" Width="100" Height="50"/>
+                <Button Content="Button 2" Width="100" Height="50"/>
+                <Button Content="Button 3" Width="100" Height="50"/>
+            </StackPanel>
+        </Viewbox>
+            <Viewbox Width="250" Height="100" Stretch="Uniform">
+                <Border Background="LightGreen" Margin="5">
+                    <TextBlock Text="右侧容器" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Border>
+            </Viewbox>
+        </WrapPanel>
+    </Window>
+

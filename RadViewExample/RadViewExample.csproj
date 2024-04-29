@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="iconfolder.png" />
+    <None Remove="Icons\icons48.png" />
+    <None Remove="Icons\openfolder.png" />
+    <None Remove="背景图.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Telerik.UI.for.Wpf.70.Xaml" Version="2023.2.718" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icons\iconfolder.png" />
+    <Resource Include="Icons\icons48.png" />
+    <Resource Include="Icons\openfolder.png" />
+    <Resource Include="背景图.png" />
+  </ItemGroup>
+
+</Project>

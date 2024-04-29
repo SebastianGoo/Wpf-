@@ -1,0 +1,55 @@
+﻿<Window x:Class="RadTreelistViewTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RadTreelistViewTest" 
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+        d:DataContext="{d:DesignInstance Type=local:MainViewModel}"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <HierarchicalDataTemplate x:Key="FileSystemTemplate" ItemsSource="{Binding Children}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Name}" FontWeight="Bold" Margin="5,0" />
+                <TextBlock Text="{Binding Size, StringFormat='Size: {0} bytes'}" Margin="5,0"
+                           Visibility="{Binding IsFolder, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter='Inverse'}"/>
+                <TextBlock Text="{Binding FileType, StringFormat='Type: {0}'}" Margin="5,0"
+                           Visibility="{Binding IsFolder, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter='Inverse'}"/>
+            </StackPanel>
+        </HierarchicalDataTemplate>
+
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+
+        </Grid.RowDefinitions>
+        <telerik:RadTreeListView ItemsSource="{Binding RootFolder.Children}"
+                                 ItemTemplate="{StaticResource FileSystemTemplate}" AutoGenerateColumns="False" 
+                                 SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+            <telerik:RadTreeListView.ChildTableDefinitions>
+                <telerik:TreeListViewTableDefinition ItemsSource="{Binding Children}" />
+            </telerik:RadTreeListView.ChildTableDefinitions>
+            <telerik:RadTreeListView.Columns>
+                <telerik:GridViewDataColumn Header="Name" DataMemberBinding="{Binding Name}" >
+                    <telerik:GridViewDataColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding IsFolder, Converter={StaticResource FolderFileIconConverter}}" Width="16" Height="16"/>
+                                <TextBlock Text="{Binding Name}" Margin="5,0" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </telerik:GridViewDataColumn.CellTemplate>
+                </telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn Header="Size" DataMemberBinding="{Binding Size}"    />
+                <telerik:GridViewDataColumn Header="Type" DataMemberBinding="{Binding FileType}" />
+            </telerik:RadTreeListView.Columns>
+        </telerik:RadTreeListView>
+
+        <telerik:RadButton Margin="10 20 10 0" Width="100" Grid.Row="1" Content="add" Command="{Binding AddItemCommand}"
+            CommandParameter="{Binding SelectedItem}"/>
+    </Grid>
+</Window>

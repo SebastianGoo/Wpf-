@@ -1,0 +1,35 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation">
+    <Style TargetType="telerik:RadGridView">
+        <Setter Property="ControlPanelItems">
+            <Setter.Value>
+                <telerik:ControlPanelItemCollection>
+                    <telerik:ControlPanelItem ButtonTooltip="Filtering Options" >
+                        <telerik:ControlPanelItem.ContentTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding IsFilteringAllowed, Mode=TwoWay}" 
+                               Content="Allow Filtering" 
+                               Margin="10"/>
+                            </DataTemplate>
+                        </telerik:ControlPanelItem.ContentTemplate>
+                    </telerik:ControlPanelItem>
+                    <telerik:ControlPanelItem ButtonTooltip="Column chooser" >
+                        <telerik:ControlPanelItem.ContentTemplate>
+                            <DataTemplate>
+                                <ListBox ItemsSource="{Binding Columns}"  BorderThickness="0">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <CheckBox Content="{Binding Header, Mode=OneWay}" 
+                                     IsChecked="{Binding IsVisible, Mode=TwoWay}" />
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </DataTemplate>
+                        </telerik:ControlPanelItem.ContentTemplate>
+                    </telerik:ControlPanelItem>
+                </telerik:ControlPanelItemCollection>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

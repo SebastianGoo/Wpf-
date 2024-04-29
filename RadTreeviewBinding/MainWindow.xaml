@@ -1,0 +1,64 @@
+﻿<Window x:Class="RadTreeviewBinding.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RadTreeviewBinding" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" xmlns:i="http://schemas.microsoft.com/xaml/behaviors" d:DataContext="{d:DesignInstance Type=local:MainViewModel}"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <telerik:RadTreeView Width="250">
+            <telerik:RadTreeViewItem Header="Setup">
+                <telerik:RadTreeViewItem Header="General">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Selected">
+                            <i:InvokeCommandAction Command="{Binding DataContext.NodeSelectedCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="General"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </telerik:RadTreeViewItem>
+                <telerik:RadTreeViewItem Header="Plate">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Selected">
+                            <i:InvokeCommandAction Command="{Binding DataContext.NodeSelectedCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="Plate"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </telerik:RadTreeViewItem>
+                <telerik:RadTreeViewItem Header="Cail">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Selected">
+                            <i:InvokeCommandAction Command="{Binding DataContext.NodeSelectedCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="Cail"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </telerik:RadTreeViewItem>
+            </telerik:RadTreeViewItem>
+            <telerik:RadTreeViewItem Header="Inspection" ItemsSource="{Binding InspectionNodes}">
+                <telerik:RadTreeViewItem.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                        <TextBlock Text="{Binding Name}"/>
+                        <HierarchicalDataTemplate.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" Width="190">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseLeftButtonUp">
+                                            <i:InvokeCommandAction   Command="{Binding DataContext.NavigateCommand, RelativeSource={RelativeSource AncestorType={x:Type telerik:RadTreeView}}}"
+                                        CommandParameter="{Binding Name}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                </TextBlock>
+                            </DataTemplate>
+                        </HierarchicalDataTemplate.ItemTemplate>
+                    </HierarchicalDataTemplate>
+                </telerik:RadTreeViewItem.ItemTemplate>
+                <telerik:RadTreeViewItem.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Inspection" VerticalAlignment="Center"/>
+                            <Button Content="➕" Command="{Binding DataContext.AddInspectionItemCommand, RelativeSource={RelativeSource AncestorType={x:Type telerik:RadTreeView}}}"
+                                    Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </telerik:RadTreeViewItem.HeaderTemplate>
+            </telerik:RadTreeViewItem>
+        </telerik:RadTreeView>
+    </Grid>
+</Window>
