@@ -8,4 +8,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Telerik.UI.for.Wpf.70.Xaml" Version="2023.2.718" />
+  </ItemGroup>
+
 </Project>

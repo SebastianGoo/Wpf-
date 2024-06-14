@@ -1,0 +1,42 @@
+﻿<Window x:Class="自带搜索水印的输入框.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:local="clr-namespace:自带搜索水印的输入框"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <!--<Grid>
+        <Grid Margin="10" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <telerik:RadWatermarkTextBox Grid.Column="0" WatermarkContent="Search..." Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Padding="0,0,30,0"/>
+            <Button Grid.Column="0" Content="🔍" Width="20" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" Command="{Binding SearchCommand}" Background="Transparent" BorderBrush="Transparent" />
+        </Grid>
+    </Grid>-->
+    <Grid Background="LightGray">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="200"/>
+            <!-- Adjust the width as needed -->
+        </Grid.ColumnDefinitions>
+
+        <!-- RadTabControl in the first column -->
+        <telerik:RadTabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0">
+            <telerik:RadTabItem Header="Tab 1">
+                <TextBlock Text="Content of Tab 1"/>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem Header="Tab 2">
+                <TextBlock Text="Content of Tab 2"/>
+            </telerik:RadTabItem>
+        </telerik:RadTabControl>
+
+        <!-- Custom right-aligned area in the second column -->
+        <Border Background="LightGray" Grid.Column="1">
+            <!-- Add any additional content here -->
+        </Border>
+    </Grid>
+</Window>

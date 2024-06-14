@@ -20,5 +20,10 @@ namespace 报警灯
         {
             InitializeComponent();
         }
+
+        private void WarningIcon_Click(object sender, MouseButtonEventArgs e)
+        {
+            MessagesPopup.IsOpen = !MessagesPopup.IsOpen;
+        }
     }
 }

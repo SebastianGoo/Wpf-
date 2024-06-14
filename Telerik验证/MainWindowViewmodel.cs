@@ -9,5 +9,6 @@ namespace Telerik验证
 {
     public class MainWindowViewmodel:BindableBase
     {
+
     }
 }

@@ -3,10 +3,39 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DataGridViewTest"
+        xmlns:local="clr-namespace:DataGridViewTest" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <!-- 自定义 GridViewHeaderCell 样式 -->
+        <Style x:Key="CustomGridViewHeaderCellStyle" TargetType="telerik:RadGridViewc">
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="telerik:GridViewHeaderCell">
+                        <Grid>
+                            <Border x:Name="headerBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <!-- 当列标题获得焦点时，改变背景颜色 -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="headerBorder" Property="Background" Value="LightGreen"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
-
+        <telerik:RadGridView AutoGenerateColumns="False" headers="{StaticResource CustomGridViewHeaderCellStyle}">
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn Header="Column 1" DataMemberBinding="{Binding Column1}"/>
+                <telerik:GridViewDataColumn Header="Column 2" DataMemberBinding="{Binding Column2}"/>
+                <telerik:GridViewDataColumn Header="Column 3" DataMemberBinding="{Binding Column3}"/>
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
     </Grid>
 </Window>

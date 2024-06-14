@@ -9,6 +9,15 @@
       Title="redlightWaring">
 
     <Grid>
-        
+        <Canvas>
+            <!-- 警告灯图标 -->
+            
+
+            <!-- 右上角的小圆 -->
+            <Border Background="Red" Width="20" Height="20" CornerRadius="10" 
+                Canvas.Left="45" Canvas.Top="5">
+                <TextBlock Text="5" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+            </Border>
+        </Canvas>
     </Grid>
 </Page>

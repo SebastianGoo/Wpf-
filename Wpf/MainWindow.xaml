@@ -7,19 +7,43 @@
      xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-        <WrapPanel>
-        <Viewbox Stretch="Uniform">
-            <StackPanel>
-                <Button Content="Button 1" Width="100" Height="50"/>
-                <Button Content="Button 2" Width="100" Height="50"/>
-                <Button Content="Button 3" Width="100" Height="50"/>
-            </StackPanel>
-        </Viewbox>
-            <Viewbox Width="250" Height="100" Stretch="Uniform">
-                <Border Background="LightGreen" Margin="5">
-                    <TextBlock Text="右侧容器" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                </Border>
-            </Viewbox>
-        </WrapPanel>
-    </Window>
+    <Window.Resources>
+        <!-- 自定义GridViewColumnHeader样式 -->
+        <Style x:Key="CustomGridViewColumnHeaderStyle" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                        <Grid>
+                            <Border x:Name="headerBorder" Background="{TemplateBinding Background}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <!-- 当列标题被选中时，改变背景颜色 -->
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="headerBorder" Property="Background" Value="Blue"/>
+                            </Trigger>
+                            <!-- 当列标题获得焦点时，改变背景颜色 -->
+                            <!--<Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="headerBorder" Property="Background" Value="LightGreen"/>
+                            </Trigger>-->
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <ListView>
+            <ListView.View>
+                <GridView ColumnHeaderContainerStyle="{StaticResource CustomGridViewColumnHeaderStyle}">
+                    <GridViewColumn Header="Column 1" Width="100"/>
+                    <GridViewColumn Header="Column 2" Width="100"/>
+                    <GridViewColumn Header="Column 3" Width="100"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
 

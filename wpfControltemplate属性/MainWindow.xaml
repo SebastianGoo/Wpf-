@@ -1,0 +1,27 @@
+﻿<Window x:Class="wpfControltemplate属性.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wpfControltemplate属性"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ControlTemplate x:Key="CustomButtonTemplate" TargetType="Button">
+            <Grid>
+                <!-- 自定义背景 -->
+                <Border Background="LightGreen" CornerRadius="5" BorderBrush="DarkGreen" BorderThickness="2">
+                    <!-- 内容展示 -->
+                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+            </Grid>
+        </ControlTemplate>
+    </Window.Resources>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <!-- 使用默认模板的按钮 -->
+        <Button Content="Default Button" Width="100" Height="30" Margin="5"/>
+
+        <!-- 使用自定义模板的按钮 -->
+        <Button Content="Custom Button" Width="100" Height="30" Margin="5" Template="{StaticResource CustomButtonTemplate}"/>
+    </StackPanel>
+</Window>
